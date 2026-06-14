@@ -8,7 +8,7 @@ Each project demonstrates a practical application of data science workflows, fro
 
 ## 📋 List of Projects
 
-### 1. Cab Ride Price Prediction (Regression)
+### 1. Uber & Lyft Fare Price Predictor (Regression)
 * **Folder:** [`1_random_forest_regression`](file:///d:/machine%20learning/Projects/1_random_forest_regression)
 * **Goal:** Predicts the fare price of Uber and Lyft rides in the Boston area based on trip characteristics and atmospheric conditions.
 * **Key Details:**
@@ -19,21 +19,6 @@ Each project demonstrates a practical application of data science workflows, fro
     * *Trip features:* `distance` (miles), `surge_multiplier`, `cab_type` (Lyft/Uber brand), `name` (service type e.g., Shared, Lux, Lux Black XL, Lyft XL), `hour`, and `day_of_week`.
     * *Weather features:* `temp` (Fahrenheit), `clouds` (cloud cover), `pressure`, `rain` (inches), `humidity`, and `wind` speed.
   * **Model Performance:** Achieved a **Mean Absolute Error (MAE) of $1.27** and an **R-squared ($R^2$) score of 95.68%**.
-
----
-
-### 2. Loan Default Risk Prediction (Classification)
-* **Folder:** [`random_forest_classification`](file:///d:/machine%20learning/Projects/random_forest_classification)
-* **Goal:** Classifies whether a borrower will fully pay back a LendingClub loan or default, enabling lenders to gauge underwriting risk.
-* **Key Details:**
-  * **Machine Learning Type:** Supervised Binary Classification using a Random Forest Classifier (`sklearn.ensemble.RandomForestClassifier` with 600 estimators).
-  * **Dataset & Scale:** Uses `loan_data.csv` consisting of **9,578 borrower records** with **14 raw financial features**.
-  * **Dependent Variable (Target):** `not.fully.paid` — Binary classification label (1 if the borrower defaulted/did not fully pay back, 0 if they successfully repaid the loan).
-  * **Independent Features:**
-    * *Credit Profile:* `credit.policy` (1 if borrower meets underwriting criteria, 0 otherwise), `fico` (FICO credit score), and `days.with.cr.line` (duration of borrower's credit line in days).
-    * *Loan Terms:* `purpose` (loan purpose e.g., credit card, debt consolidation, educational, major purchase), `int.rate` (interest rate as a decimal), and `installment` (monthly payment due).
-    * *Financial Health:* `log.annual.inc` (natural log of self-reported annual income), `dti` (debt-to-income ratio), `revol.bal` (unpaid revolving balance), and `revol.util` (revolving line utilization rate).
-    * *Credit/Delinquency History:* `inq.last.6mths` (creditor inquiries in the last 6 months), `delinq.2yrs` (times delinquent on payments by 30+ days in the last 2 years), and `pub.rec` (number of derogatory public records).
 
 ---
 
