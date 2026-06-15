@@ -22,6 +22,23 @@ Each project demonstrates a practical application of data science workflows, fro
 
 ---
 
+### 2. E-Commerce Customer Churn Predictor (Classification)
+* **Folder:** [`2_logistic_regression`](file:///d:/machine%20learning/Projects/2_logistic_regression)
+* **Goal:** Predicts customer churn (whether a customer will stop using the e-commerce platform) based on demographics, purchase history, satisfaction metrics, and app engagement.
+* **Key Details:**
+  * **Machine Learning Type:** Supervised Binary Classification using Logistic Regression (`sklearn.linear_model.LogisticRegression` with L2 regularization).
+  * **Dataset & Scale:** Uses `E Commerce Dataset.xlsx` consisting of **5,630 rows** and **20 features** (demographics, transactional history, and app engagement). After scaling and one-hot encoding categorical features, the final dataset contains **26 columns**.
+  * **Dependent Variable (Target):** `Churn` — Binary classification label (1 if the customer churned/left the platform, 0 if they stayed).
+  * **Independent Features:**
+    * *Customer Profile:* `Tenure` (months active), `Gender`, `MaritalStatus`, `CityTier`, and `NumberOfAddress`.
+    * *App Engagement:* `PreferredLoginDevice`, `HourSpendOnApp`, and `NumberOfDeviceRegistered`.
+    * *Purchase & Payment Behavior:* `PreferredPaymentMode`, `PreferedOrderCat` (e.g. Laptop & Accessory, Mobile, Fashion), `OrderCount`, `DaySinceLastOrder`, `OrderAmountHikeFromlastYear`, `CouponUsed`, and `CashbackAmount`.
+    * *Satisfaction & Complaints:* `SatisfactionScore` (1-5 scale) and `Complain` (1 if customer raised a complaint, 0 otherwise).
+  * **Threshold Optimization:** Lowered decision threshold from `0.5` to `0.35` to minimize costly False Negatives (missing churners), increasing correct churn detection (True Positives) from **110 to 130** (a 26.7% reduction in False Negatives).
+  * **Model Performance:** Achieved a **ROC AUC Score of 0.8981**.
+
+---
+
 ## 🛠️ Requirements & Setup
 
 To explore and run the Jupyter notebooks in this repository:
