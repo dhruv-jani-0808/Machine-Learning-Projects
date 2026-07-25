@@ -13,6 +13,7 @@ Each project demonstrates a practical application of data science workflows, fro
 | **1** | **Uber & Lyft Fare Price Predictor** | Random Forest Regressor | Regression | [1_uber_lyft_fare_prediction_random_forest](file:///d:/machine%20learning/Projects/1_uber_lyft_fare_prediction_random_forest) |
 | **2** | **E-Commerce Customer Churn Predictor** | Logistic Regression | Binary Classification | [2_ecommerce_churn_logistic_regression](file:///d:/machine%20learning/Projects/2_ecommerce_churn_logistic_regression) |
 | **3** | **Movie Recommendation System** | K-Nearest Neighbors (KNN) | Collaborative Filtering | [3_movie_recommendation_KNN](file:///d:/machine%20learning/Projects/3_movie_recommendation_KNN) |
+| **4** | **NASA Pulsar Star Classification** | Non-Linear SVM (RBF Kernel) | Binary Classification | [4_NASA_Pulsar_Star_Classification_Non-Linear_SVM](file:///d:/machine%20learning/Projects/4_NASA_Pulsar_Star_Classification_Non-Linear_SVM) |
 
 *Click on a project folder to view the details, dataset schema, performance metrics, and implementation steps.*
 
