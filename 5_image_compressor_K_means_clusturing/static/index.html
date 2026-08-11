@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Means Smart Image Compressor | Unsupervised Machine Learning</title>
+  <meta name="description" content="Intelligent Image Compressor powered by Unsupervised K-Means Clustering and adaptive size quantization.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <header class="navbar">
+    <div class="logo" id="nav-logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">K-Means<span class="highlight">Compress</span></span>
+    </div>
+    <div class="header-tag">Unsupervised ML Compressor</div>
+  </header>
+
+  <main class="app-wrapper">
+    <!-- VIEW 1: HOME PAGE -->
+    <section id="view-home" class="view active">
+      <div class="hero">
+        <div class="hero-badge">✨ Adaptive Unsupervised Color Quantization</div>
+        <h1 class="hero-title">Compress Any Image to Your <span class="gradient-text">Target File Size</span></h1>
+        <p class="hero-subtitle">Reduces heavy photos down to your exact KB target using intelligent K-Means++ clustering & dimension optimization.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" id="card-compress">
+          <div class="card-badge">Most Popular</div>
+          <div class="card-icon">🎨</div>
+          <h3>Full Color Target Size Compressor</h3>
+          <p>Set a target file size (e.g. 100 KB) and let K-Means clustering compress your photo while retaining maximum visual quality.</p>
+          <button class="btn btn-primary card-btn">Start Compressor &rarr;</button>
+        </div>
+
+        <div class="feature-card" id="card-grayscale">
+          <div class="card-badge badge-gray">Retro Style</div>
+          <div class="card-icon">🔳</div>
+          <h3>Grayscale Size Compressor</h3>
+          <p>Convert your image to classic grayscale and quantize intensity shades down to your desired target file size.</p>
+          <button class="btn btn-secondary card-btn">Start Grayscale &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: UPLOAD & CONFIGURATION WORKSPACE -->
+    <section id="view-upload" class="view hidden">
+      <div class="view-header">
+        <button id="btn-back-home" class="btn-ghost">&larr; Back to Home</button>
+        <h2 id="workspace-title">Upload & Set Target Size</h2>
+      </div>
+
+      <div class="workspace-grid">
+        <!-- Upload Dropzone -->
+        <div class="glass-panel upload-panel">
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="file-input" accept="image/*" class="file-input">
+            <div class="dropzone-content" id="dropzone-prompt">
+              <div class="upload-icon">📸</div>
+              <h3>Drag & Drop your image here</h3>
+              <p>Supports High-Res JPG, PNG, WEBP, BMP up to 20MB</p>
+              <button class="btn btn-outline" type="button" onclick="document.getElementById('file-input').click()">Browse Image</button>
+            </div>
+
+            <div class="file-preview hidden" id="file-preview">
+              <img id="preview-img" src="" alt="Selected Preview">
+              <div class="preview-info">
+                <span id="preview-filename">image.png</span>
+                <span id="preview-filesize" class="badge-sm">0 KB</span>
+              </div>
+              <button id="btn-remove-file" class="btn-icon" title="Remove image">&times;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="glass-panel controls-panel">
+          <div class="control-group">
+            <label for="input-target-kb" class="label-title">Set Max Target File Size</label>
+            <div class="input-with-unit">
+              <input type="number" id="input-target-kb" min="10" max="10000" value="100" class="input-field">
+              <span class="unit">KB</span>
+            </div>
+            
+            <!-- Quick Target Size Presets -->
+            <div class="presets-row">
+              <span class="presets-label">Quick Presets:</span>
+              <button class="preset-btn" data-size="50">50 KB</button>
+              <button class="preset-btn active" data-size="100">100 KB</button>
+              <button class="preset-btn" data-size="250">250 KB</button>
+              <button class="preset-btn" data-size="500">500 KB</button>
+            </div>
+            <p class="input-hint">The K-Means algorithm will adaptively adjust color clusters and resolution to compress under this limit.</p>
+          </div>
+
+          <!-- Grayscale Toggle -->
+          <div class="control-group checkbox-group">
+            <label class="switch-label">
+              <input type="checkbox" id="chk-grayscale" class="switch-input">
+              <span class="switch-slider"></span>
+              <span class="switch-text">Convert image to Grayscale</span>
+            </label>
+          </div>
+
+          <button id="btn-compress-submit" class="btn btn-primary btn-block btn-lg" disabled>
+            <span id="btn-text">Compress to Target Size</span>
+            <div id="btn-spinner" class="spinner hidden"></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: RESULTS & COMPARISON DASHBOARD -->
+    <section id="view-results" class="view hidden">
+      <div class="view-header">
+        <div>
+          <h2 id="results-title">Compression Results</h2>
+          <p class="results-subtitle">Drag the split slider left or right to inspect visual quality</p>
+        </div>
+        <div class="header-actions">
+          <button id="btn-compress-another" class="btn btn-outline">&larr; Compress Another Image</button>
+          <a id="btn-download" href="#" download="compressed_image.jpg" class="btn btn-primary btn-glow">⬇ Download Compressed File</a>
+        </div>
+      </div>
+
+      <!-- Before / After Split Slider -->
+      <div class="glass-panel comparison-panel">
+        <div class="comparison-container" id="comparison-container">
+          <img id="img-original" src="" alt="Original Image" class="comp-img comp-bg">
+          <div class="comp-overlay" id="comp-overlay">
+            <img id="img-compressed" src="" alt="Compressed Image" class="comp-img comp-fg">
+          </div>
+          <div class="comp-slider-handle" id="comp-handle">
+            <div class="handle-line"></div>
+            <div class="handle-circle">&#8596;</div>
+            <div class="handle-line"></div>
+          </div>
+          <div class="comp-label comp-label-left">Original</div>
+          <div class="comp-label comp-label-right">Compressed</div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Original Size</span>
+          <span id="stat-orig-size" class="stat-value">0 KB</span>
+        </div>
+        <div class="stat-card highlight-card">
+          <span class="stat-label">Compressed Size</span>
+          <span id="stat-comp-size" class="stat-value">0 KB</span>
+        </div>
+        <div class="stat-card accent-card">
+          <span class="stat-label">Size Reduction</span>
+          <span id="stat-reduction" class="stat-value stat-green">0%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Adapted K-Means Clusters</span>
+          <span id="stat-k-used" class="stat-value">0</span>
+        </div>
+      </div>
+
+      <!-- Dominant Color Swatches -->
+      <div class="glass-panel swatches-panel">
+        <h3>Extracted K-Means Centroid Color Palette</h3>
+        <p class="swatches-hint">Click any swatch to copy Hex color</p>
+        <div id="swatches-grid" class="swatches-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

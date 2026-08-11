@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  image-compressor:
+    build: .
+    container_name: kmeans_image_compressor
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./static:/app/static
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
