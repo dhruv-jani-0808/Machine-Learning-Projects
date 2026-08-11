@@ -10,7 +10,11 @@ short_description: Unsupervised K-Means image compression & color quantization a
 
 # 🖼️ Smart Image Compressor via K-Means Clustering
 
+[![Live Web App](https://img.shields.io/badge/🌐_Live_Demo-Render-blue?style=for-the-badge)](http://kmeans-image-compressor-lria.onrender.com/)
+
 An end-to-end Unsupervised Machine Learning web application and portfolio project that compresses images using **K-Means Clustering** color quantization. The system intelligently reduces an image's unique color palette into $K$ cluster centroids, adaptively fitting photos under user-defined target file sizes (e.g. Max 100 KB).
+
+* **🌐 Live Web Application:** [http://kmeans-image-compressor-lria.onrender.com/](http://kmeans-image-compressor-lria.onrender.com/)
 
 ---
 
